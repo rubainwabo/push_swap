@@ -21,6 +21,7 @@ SRC_SOLVER = $(addsuffix .c, $(FILES_SOLVER))
 OBJ_SOLVER = $(addsuffix .o, $(FILES_SOLVER))
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
+INC = inc/
 
 all: $(NAME)
 
@@ -28,10 +29,10 @@ $(NAME): $(CHECKER) $(SOLVER)
 	@make -C libft/
 
 $(CHECKER): $(OBJ_CHECKER)
-	@$(CC) $(CFLAGS) -o $(NAME) -c $(SRC_CHECKER)
+	@$(CC) $(CFLAGS) -I $(INC)-o $(NAME) -c $(SRC_CHECKER)
 	@mv $(NAME) $(CHECKER)
 $(CHECKER): $(OBJ_SOLVER)
-	@$(CC) $(CFLAGS) -o $(NAME) -c $(SRC_SOLVER)
+	@$(CC) $(CFLAGS) -I $(INC) -o $(NAME) -c $(SRC_SOLVER)
 	@mv $(NAME) $(SOLVER)
 clean:
 	@make -C libft/ clean
