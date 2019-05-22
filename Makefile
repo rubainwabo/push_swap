@@ -10,39 +10,26 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = exec
-CHECKER = checker
-SOLVER = push_swap
-FILES_CHECkER = checker/
-SRC_CHECKER = $(addsuffix .c, $(FILES_CHECkER))
-OBJ_CHECKER = $(addsuffix .o, $(FILES_CHECkER))
-FILES_SOLVER = solver/
-SRC_SOLVER = $(addsuffix .c, $(FILES_SOLVER))
-OBJ_SOLVER = $(addsuffix .o, $(FILES_SOLVER))
+SRC = checker.c check_instructions.c
+OBJ = $(SRC:.c=.o)
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-INC = inc/
 
-all: $(NAME)
+all: checker push_swap
 
-$(NAME): $(CHECKER) $(SOLVER)
+checker: $(OBJ)
 	@make -C libft/
+	@$(CC) $(CFLAGS) -o checker $(SRC) -L libft/ -lft
+push_swap: $(OBJ)
+	@$(CC) $(CFLAGS) -o push_swap $(SRC) -L libft/ -lft
 
-$(CHECKER): $(OBJ_CHECKER)
-	@$(CC) $(CFLAGS) -I $(INC)-o $(NAME) -c $(SRC_CHECKER)
-	@mv $(NAME) $(CHECKER)
-$(CHECKER): $(OBJ_SOLVER)
-	@$(CC) $(CFLAGS) -I $(INC) -o $(NAME) -c $(SRC_SOLVER)
-	@mv $(NAME) $(SOLVER)
 clean:
 	@make -C libft/ clean
-	@/bin/rm -f $(OBJ_CHECKER)
-	@/bin/rm -f $(OBJ_SOLVER)
-
+	@/bin/rm -f $(OBJ)
 fclean: clean
 	@make -C libft/ fclean
-	@/bin/rm -f $(CHECKER)
-	@/bin/rm -f $(SOLVER)
+	@/bin/rm -f checker
+	@/bin/rm -f push_swap
 
 re: fclean all
 
