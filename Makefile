@@ -14,13 +14,14 @@ SRC = checker.c check_instructions.c
 OBJ = $(SRC:.c=.o)
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
+INC = push_swap.h
 
 all: checker push_swap
 
-checker: $(OBJ)
+checker: $(OBJ) $(INC)
 	@make -C libft/
 	@$(CC) $(CFLAGS) -o checker $(SRC) -L libft/ -lft
-push_swap: $(OBJ)
+push_swap: $(OBJ) $(INC)
 	@$(CC) $(CFLAGS) -o push_swap $(SRC) -L libft/ -lft
 
 clean:

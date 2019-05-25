@@ -145,4 +145,5 @@ void			ft_fetch_arg2(t_conv *type, va_list arg);
 void			ft_fetch_arg3(t_conv *type, va_list arg);
 int				ft_parse(const char *restrict format, va_list arg);
 int				ft_printf(const char *restrict format, ...);
+void			ft_lstaddback(t_list **alst, t_list *new);
 #endif

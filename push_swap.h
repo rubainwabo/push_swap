@@ -11,6 +11,7 @@
 # define H	"rra\n"
 # define I	"rrb\n"
 # define J	"rrr\n"
+# define K	"ss\n"
 # include "libft/libft.h"
 # include <stdio.h>
 
@@ -21,10 +22,10 @@
 typedef struct s_swap
 {
 	int			*data;
-	char		**ins;
+	short			state;
 }				t_swap;
 int				ft_check_instructions(char *str);
-int				ft_check_str(int ac, char **av);
+int				ft_check_str(int ac, char **av, t_swap *d);
 int				ft_checker(int ac, char **av);
 
 #endif
