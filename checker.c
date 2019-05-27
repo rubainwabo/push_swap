@@ -1,24 +1,30 @@
 #include "push_swap.h"
 
-void		fill_tab(t_swap *d, char **av, int len)
+void	sort_tab(int *tab, int len)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		tmp;
 
 	i = 0;
-	j = (d->state == 1 && (len--)) ? 0 : 1;
-	while (j < len)
+	while(i + 1 < len)
 	{
-		d->data[i] = ft_atoi(av[j]);
-		ft_printf("data stored at %d = %d\n", i, d->data[i]);
-		i++;
-		j++;
+		if (tab[i] > tab[i + 1])
+		{
+			tmp = tab[i + 1];
+			tab[i + 1] = tab[i];
+			tab[i] = tmp;
+			i = 0;
+		}
+		else
+			i++;
 	}
 }
+
 int		ft_checker(int ac, char **av)
 {
 	t_swap			d;
 
+	d.state = 0;
 	if (ac == 2)
 	{
 		d.state = 1;
@@ -31,18 +37,24 @@ int		ft_checker(int ac, char **av)
 		while (av[ac])
 			ac++;
 	}
-	if (!ft_check_str(ac, av, &d))
-	{
-		ft_putstr("Error\n");
-		return (0);
-	}
-	ac += (d.state == 1) ? 1 : 0;
+	ac += ((d.state == 1) ? 1 : 0);
 	if (!(d.data = (int *)malloc(sizeof(int) * (ac - 1))))
 	{
 		perror("malloc failed!\n");
 		return (0);
 	}
-	fill_tab(&d, av, ac);
+	ac -= ((d.state == 1) ? 1 : 0);
+	if (!check_str(ac, av, &d))
+	{
+		ft_putstr("Error\n");
+		return (0);
+	}
+	sort_tab(d.data, ac);
+	d.state = 0;
+	ac -= ((d.state == 0) ? 1 : 0);
+	while (d.state < ac)
+		//ft_printf("Sorted tab element %d = %d\n", d.state, d.data[d.state]);
+		d.state++;
 	return (1);
 }
 

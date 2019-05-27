@@ -1,31 +1,33 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# define A	"sa\n"
-# define B	"sb\n"
-# define C	"pa\n"
-# define D	"pb\n"
-# define E	"ra\n"
-# define F	"rb\n"
-# define G	"rr\n"
-# define H	"rra\n"
-# define I	"rrb\n"
-# define J	"rrr\n"
-# define K	"ss\n"
 # include "libft/libft.h"
 # include <stdio.h>
+# define A	"sa"
+# define B	"sb"
+# define C	"pa"
+# define D	"pb"
+# define E	"ra"
+# define F	"rb"
+# define G	"rr"
+# define H	"rra"
+# define I	"rrb"
+# define J	"rrr"
+# define K	"ss"
 
 /*
 ** Struct to store instructions and data
 */
 
-typedef struct s_swap
+typedef struct		s_swap
 {
-	int			*data;
+	//int				*data;
 	short			state;
-}				t_swap;
-int				ft_check_instructions(char *str);
-int				ft_check_str(int ac, char **av, t_swap *d);
-int				ft_checker(int ac, char **av);
+	t_list			*list;
+	t_list			*list_num;
+}					t_swap;
+int					check_instructions(char *str);
+int					check_str(int ac, char **av, t_swap *d);
+int					checker(int ac, char **av);
 
 #endif

@@ -25,21 +25,27 @@ void	swap_ss(int *a, int *b, int len1, int len2)
 ** len of the stack which is receiving
 */
 
-void	push_a(int *a, int *b, int len, int index)
+void	push_b(int *a, int *b, int len) // take the first element of a
 {
+	static int	index;
+
+	index = 0;
 	if (len >= 1 && index <= len - 1)
 	{
 		b[len - index - 1] = a[index];
-		a[index] = 0;
+		index++;
 	}
 }
 
-void	push_b(int *b, int *a, int len, int index)
+void	push_a(int *b, int *a, int len) // take the first element of b
 {
+	static int	index;
+
+	index = 0;
 	if (len >= 1 && index <= len - 1)
 	{
-		a[len - index -1] = b[index]
-		a[index] = 0;
+		a[len - index -1] = b[index];
+		index++;
 	}
 }
 
@@ -63,10 +69,10 @@ void	rotate_rr(int *a, int *b, int len1, int len2)
 
 void	rev_rotate(int *stack, int len)
 {
-	while (len - 1 >= 0)
+	while (len - 2 >= 0)
 	{
+		swap(&stack[len - 1], &stack[len - 2]);
 		len--;
-		swap(&stack[len], &stack[len - 1]);
 	}
 }
 
@@ -76,14 +82,53 @@ void	rev_rotate_rr(int *a, int *b, int len1, int len2)
 	rev_rotate(b, len2);
 }
 
-int	main(void)
+int	main(int ac, char **av)
 {
-	int tab[5] = {10, 1, 5, 4, 2};
-	int tab1[5] = {0};
-	int i = 0;
-	while (i < 5)
+	if (ac < 2)
 	{
-		ft_printf("tab[%d] = %d\n", i, tab[i]);
+		ft_putstr("Not enough arguments :(\n");
+		return (0);
+	}
+	int		len = 6;
+	int tab[6] = {2, 1, 3, 6, 5, 8};
+	int tab1[6] = {0};
+	int i = 0;
+	while (i < ac)
+	{
+		 if (!ft_strcmp(av[i], A))
+		 	swap_stack(tab, len);
+		 else if (!ft_strcmp(av[i], B))
+		 	swap_stack(tab1, 0);
+		else if (!ft_strcmp(av[i], C))
+		 	push_a(tab1, tab, 0);
+		else if (!ft_strcmp(av[i], D))
+		 	push_b(tab, tab1, len);
+		else if (!ft_strcmp(av[i], E))
+		 	rotate_stack(tab, len);
+		else if (!ft_strcmp(av[i], F))
+		 	rotate_stack(tab1, len);
+		else if (!ft_strcmp(av[i], G))
+		 	rotate_rr(tab, tab1, len, len);
+		else if (!ft_strcmp(av[i], H))
+		 	rev_rotate(tab, len);
+		else if (!ft_strcmp(av[i], I))
+		 	rev_rotate(tab, len);
+	 	else if (!ft_strcmp(av[i], J))
+		 	rev_rotate_rr(tab, tab1, len, len);
+		else if (!ft_strcmp(av[i], K))
+		 	swap_ss(tab, tab1, len, len);
+		i++;
+	}
+	i = 0;
+	while (i < len)
+	{
+		ft_printf("a -- sorted element tab[%d] = %d\n", i, tab[i]);
+		i++;
+	}
+	i = 0;
+	while (i < len)
+	{
+		ft_printf("b -- sorted element tab1[%d] = %d\n", i, tab1[i]);
 		i++;
 	}
 	return (0);
