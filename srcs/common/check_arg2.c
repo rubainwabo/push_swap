@@ -6,7 +6,7 @@
 /*   By: rkamegne <rkamegne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 10:52:16 by rkamegne          #+#    #+#             */
-/*   Updated: 2019/06/19 14:52:07 by rkamegne         ###   ########.fr       */
+/*   Updated: 2019/06/19 15:17:33 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,20 @@ int		check_instructions(char *str)
 int		fill_list(t_swap *d)
 {
 	char	*line;
+	t_list	*new;
 
 	line = NULL;
 	while (get_next_line(0, &line) > 0)
 	{
+		if (!line || !(new = ft_lstnew((void *)line,
+						(size_t)ft_strlen(line))))
+			ft_error("Error");
 		if (!check_instructions(line))
 			return (0);
 		if (!d->list_ins)
-		{
-			if (!(d->list_ins = ft_lstnew((void *)line,
-							(size_t)ft_strlen(line))))
-				return (0);
-		}
+			d->list_ins = new;
 		else
-			ft_lstaddback(&d->list_ins, ft_lstnew((void *)line,
-			(size_t)ft_strlen(line)));
+			ft_lstaddback(&d->list_ins, new);
 		free(line);
 	}
 	return (1);
