@@ -1,35 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_free_content.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkamegne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/18 16:27:29 by rkamegne          #+#    #+#             */
-/*   Updated: 2019/05/31 22:23:48 by rkamegne         ###   ########.fr       */
+/*   Created: 2019/05/28 15:12:15 by rkamegne          #+#    #+#             */
+/*   Updated: 2019/06/18 22:42:41 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+void	ft_free_content(void *content, size_t content_size)
 {
-	size_t	i;
-	size_t	i1;
-	size_t	i2;
-
-	i = 0;
-	i1 = ft_strlen(dst);
-	i2 = ft_strlen(src);
-	if (size == 0)
-		return (i2);
-	if (size - 1 < i1)
-		return (i2 + size);
-	while (i1 + i < size - 1 && src[i] != '\0')
-	{
-		dst[i1 + i] = src[i];
-		i++;
-	}
-	dst[i1 + i] = '\0';
-	return (i1 + i2);
+	(void)content_size;
+	if (content)
+		free(content);
 }

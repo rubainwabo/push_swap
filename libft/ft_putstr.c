@@ -6,7 +6,7 @@
 /*   By: rkamegne <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/13 02:45:00 by rkamegne          #+#    #+#             */
-/*   Updated: 2018/10/23 19:19:36 by rkamegne         ###   ########.fr       */
+/*   Updated: 2019/06/18 19:42:51 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,5 @@
 void	ft_putstr(char const *str)
 {
 	if (str != NULL)
-	{
-		while (*str)
-		{
-			ft_putchar(*str);
-			str++;
-		}
-	}
+		write(1, str, ft_strlen(str));
 }

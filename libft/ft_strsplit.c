@@ -63,8 +63,8 @@ char		**ft_strsplit(char const *s, char c)
 	t = NULL;
 	if (s == NULL)
 		return (NULL);
-	nb_word = count_w((const char*)s, c);
-	if (!(t = (char**)malloc(sizeof(*t) * (count_w((const char*)s, c) + 1))))
+	if (!(nb_word = count_w((const char*)s, c)) ||
+	!(t = (char**)malloc(sizeof(*t) * (count_w((const char*)s, c) + 1))))
 		return (NULL);
 	while (nb_word--)
 	{

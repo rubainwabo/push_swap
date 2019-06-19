@@ -24,7 +24,8 @@ SRC = ft_lstdel.c ft_putendl_fd.c ft_strdel.c ft_strnequ.c ft_atoi.c ft_lstdelon
 	ft_ispace.c ft_memset.c ft_strchr_alpha.c ft_strmapi.c ft_isprint.c ft_putchar.c\
 	ft_strclr.c ft_strncat.c ft_itoa.c ft_putchar_fd.c ft_strcmp.c ft_strncmp.c ft_lstadd.c\
 	ft_putendl.c ft_strcpy.c ft_strncpy.c ft_conver_csp.c ft_printf.c ft_parse.c ft_utils.c\
-	ft_conver_numbers.c ft_unsigned_numbers.c ft_unsigned_numbers2.c ft_float_numbers.c ft_lstaddback.c
+	ft_conver_numbers.c ft_unsigned_numbers.c ft_unsigned_numbers2.c ft_float_numbers.c ft_lstaddback.c\
+	ft_lstlen.c ft_free_content.c ft_isnumber.c ft_error.c
 
 OBJ = $(SRC:.c=.o)
 

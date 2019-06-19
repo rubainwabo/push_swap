@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstaddback.c                                    :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkamegne <rkamegne@student.s19.be>         +#+  +:+       +#+        */
+/*   By: rkamegne <rkamegne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/29 04:15:33 by rkamegne          #+#    #+#             */
-/*   Updated: 2019/06/09 02:11:01 by rkamegne         ###   ########.fr       */
+/*   Created: 2019/06/17 10:22:55 by rkamegne          #+#    #+#             */
+/*   Updated: 2019/06/18 19:41:10 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstaddback(t_list **alst, t_list *new)
+void	ft_error(char *str)
 {
-	t_list	*tmp;
-
-	if (alst && new)
+	if (str)
 	{
-		tmp = *alst;
-		while (tmp->next)
-			tmp = tmp->next;
-		tmp->next = new;
+		ft_putendl("Error");
+		exit(1);
 	}
 }

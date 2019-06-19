@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstaddback.c                                    :+:      :+:    :+:   */
+/*   event_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rkamegne <rkamegne@student.s19.be>         +#+  +:+       +#+        */
+/*   By: rkamegne <rkamegne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/29 04:15:33 by rkamegne          #+#    #+#             */
-/*   Updated: 2019/06/09 02:11:01 by rkamegne         ###   ########.fr       */
+/*   Created: 2019/06/15 16:23:41 by rkamegne          #+#    #+#             */
+/*   Updated: 2019/06/18 22:21:12 by rkamegne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "visualizer.h"
 
-void	ft_lstaddback(t_list **alst, t_list *new)
+int		deal_key(int key, t_swap *d)
 {
-	t_list	*tmp;
-
-	if (alst && new)
+	if (key == 53)
 	{
-		tmp = *alst;
-		while (tmp->next)
-			tmp = tmp->next;
-		tmp->next = new;
+		free_lists(d);
+		exit(0);
 	}
+	else if (key == 49)
+	{
+		if (!d->pause)
+			d->pause = 1;
+		else if (d->pause == 1)
+			d->pause = 0;
+	}
+	return (0);
 }
