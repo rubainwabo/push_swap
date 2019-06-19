@@ -11,8 +11,9 @@ USAGE :
 the list of instructions which is piped into the checker program)
 - PUSH_SWAP + VISUALIZER : ARG=\`numbers\`; ./push_swap $ARG | ./visual $ARG
 
-You can use the following script at the place of 'numbers' to generate a defined range set of numbers :
+You can use the following script at the place of "numbers" to generate a defined range set of numbers :
           ruby -e "puts (-550..549).to_a.shuffle.join(' ')"
--EXAMPLE : ARG=\`ruby -e "puts (-550..549).to_a.shuffle.join(' ')"\`; ./push_swap $ARG | ./checker $ARG
+          
+- EXAMPLE : ARG=\`ruby -e "puts (-550..549).to_a.shuffle.join(' ')"\`; ./push_swap $ARG | ./checker $ARG
 
 ![](ps.gif)
