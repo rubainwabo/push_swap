@@ -44,7 +44,7 @@ becomes the first one.
 - CHECKER : 
           
           ARG=`numbers`; ./checker $ARG
-          //This will wait for the list of instructions which are (sa, sb, 
+          //This will wait for the list of instructions which are (sa, sb, ...)
 - PUSH_SWAP : 
 
           ARG=`numbers`; ./push_swap $ARG
@@ -65,6 +65,7 @@ You can use the following script at the place of "numbers" to generate a defined
           
 - EXAMPLE : 
           
-          ARG=`ruby -e "puts (-50..49).to_a.shuffle.join(' ')"`; ./push_swap $ARG | ./checker $ARG
+          ARG=`ruby -e "puts (-50..49).to_a.shuffle.join(' ')"`; ./push_swap $ARG | ./visual $ARG
+          //gives the following output
 
 ![](ps.gif)
