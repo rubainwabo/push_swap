@@ -56,7 +56,7 @@ becomes the first one.
             //note that push_swap has always to give the list of instructions which is piped into the checker program
 
 BONUS :
-- Using checker -v or push_swap -v will display every state of the stacks while sorting or verifying the sort.
+- Using checker -v or push_swap -v will display every states of the stacks while sorting or verifying the sort.
 
 - PUSH_SWAP + VISUALIZER : 
 
